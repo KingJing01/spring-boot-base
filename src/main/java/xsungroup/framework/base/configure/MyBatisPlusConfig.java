@@ -1,6 +1,7 @@
 package xsungroup.framework.base.configure;
 
 import com.baomidou.mybatisplus.core.config.GlobalConfig;
+import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -21,4 +22,5 @@ public class MyBatisPlusConfig {
         globalConfig.setMetaObjectHandler(new MetaHandler());
         return globalConfig;
     }
+
 }

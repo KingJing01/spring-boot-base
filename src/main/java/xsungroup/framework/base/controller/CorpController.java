@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import xsungroup.framework.base.entity.CorpEntity;
 
 /**
- * @Description: 公司信息测试
+ * @Description: 公司信息Controller
  * @Author: kingJing
  * @Date: 2019/7/5 13:38
  **/

@@ -1,5 +1,7 @@
 package xsungroup.framework.base.utils;
 
+import org.springframework.util.StringUtils;
+
 /**
  * @description: 返回消息对象封装
  * @author: kingJing 

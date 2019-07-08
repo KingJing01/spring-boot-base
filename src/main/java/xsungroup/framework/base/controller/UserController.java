@@ -5,11 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import xsungroup.framework.base.entity.UserEntity;
 
-
 /**
- * @description: 用户信息Controller 
+ * @description: 用户信息Controller
  * @author: kingJing 
- * @Date: 2019/7/8 14:49
+ * @Date: 2019/7/8 15:00
  */
 @Api(description = "用户信息管理-增删改查",tags={"用户接口"})
 @RestController

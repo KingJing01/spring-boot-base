@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 @ControllerAdvice
 public class ControllerExceptionHandler {
-    private static final String logExceptionFormat = "全局异常捕获 GlobalExceptionHandler: Code: %s Detail: %s";
+    private static final String logExceptionFormat = "全局异常捕获 ControllerExceptionHandler: Code: %s Detail: %s";
     private static Logger log = LoggerFactory.getLogger(ControllerExceptionHandler.class);
 
     /**

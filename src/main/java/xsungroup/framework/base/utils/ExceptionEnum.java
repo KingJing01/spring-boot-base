@@ -2,6 +2,8 @@ package xsungroup.framework.base.utils;
 
 import lombok.Getter;
 
+import java.sql.SQLException;
+
 @Getter
 public enum ExceptionEnum {
     RUNTIMEEXP(1, "运行时异常"),
@@ -14,8 +16,9 @@ public enum ExceptionEnum {
 
     OutBoundExp(5,"数组越界异常"),
 
-    OtherException(6,"其他异常"),;
+    OtherException(6,"其他异常"),
 
+    SQLExp(7,"数据库操作异常"),;
 
     // 编码
     private int code;

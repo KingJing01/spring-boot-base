@@ -27,4 +27,9 @@ public class UserEntity extends BaseEntity {
     @TableField
     @ApiModelProperty(value = "用户性别")
     private String sex;
+
+    @TableField
+    @ApiModelProperty(value = "电话")
+    private String phone;
+
 }

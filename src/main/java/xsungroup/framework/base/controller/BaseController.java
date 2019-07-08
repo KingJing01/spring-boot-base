@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,7 +32,7 @@ public class BaseController<T> {
      */
     @ApiOperation(value = "新增")
     @PostMapping("/save")
-    public ResponseInfo saveData(@RequestBody T t) {
+    public ResponseInfo saveData(@RequestBody T t){
         int result = baseDao.insert(t);
         return result > 0 ? new ResponseUtil().success("") : new ResponseUtil().error(ResultEnum.FAIL.getMessage());
     }
@@ -44,7 +45,7 @@ public class BaseController<T> {
     @ApiOperation(value = "删除")
     @ApiImplicitParam(name = "id", value = "主键ID", required = true, dataType = "String")
     @DeleteMapping("/{id}")
-    public ResponseInfo deleteData(@PathVariable String id) {
+    public ResponseInfo deleteData(@PathVariable String id){
         baseDao.deleteById(id);
         return  new ResponseUtil().success("");
     }

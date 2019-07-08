@@ -1,23 +1,21 @@
 package xsungroup.framework.base.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import xsungroup.framework.base.service.BaseService;
+import xsungroup.framework.base.dao.BaseDao;
 
 /**
 * @Description: 基础控制层封装
 * @Author: kingJing
 * @Date: 2019/7/5 13:38
 **/
-@Controller
-public class BaseController<T>  {
+public  class BaseController<T>  {
 
     @Autowired
-    private BaseService baseService;
+    private BaseDao<T> baseDao;
 
     /**
      * 通用新增方法.
@@ -25,7 +23,7 @@ public class BaseController<T>  {
      */
     @PostMapping("/save")
     public void saveDate(@RequestBody T t){
-        baseService.save(t);
+        baseDao.insert(t);
     }
 
     /**
@@ -34,7 +32,7 @@ public class BaseController<T>  {
      */
     @DeleteMapping("/{id}")
     public void deleteDate(@PathVariable String id){
-        baseService.removeById(id);
+        baseDao.deleteById(id);
     }
 
 

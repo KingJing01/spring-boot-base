@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 * @Author: kingJing
 * @Date: 2019/7/5 14:03
 **/
-public interface BaseService<T> extends IService<T> {
+public  interface BaseService<T> extends IService<T> {
 
 
 

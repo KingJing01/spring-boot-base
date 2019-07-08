@@ -9,7 +9,7 @@ import lombok.Getter;
  */
 @Getter
 public enum ResultEnum {
-    SUCCESS(0, "成功"),
+    SUCCESS(0, "操作成功"),
     FAIL(1, "操作失败"),;
     // 编码
     private int code;

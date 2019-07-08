@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import xsungroup.framework.base.dao.BaseDao;
 import xsungroup.framework.base.utils.ResponseInfo;
+import xsungroup.framework.base.utils.ResponseUtil;
 
 /**
 * @Description: 基础控制层封装
@@ -30,7 +31,7 @@ public  class BaseController<T>  {
     @PostMapping("/save")
     public ResponseInfo saveDate(@RequestBody T t){
         baseDao.insert(t);
-        return new ResponseInfo();
+        return new ResponseUtil().success("");
     }
 
     /**

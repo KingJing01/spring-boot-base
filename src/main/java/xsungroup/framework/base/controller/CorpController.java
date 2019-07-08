@@ -10,7 +10,7 @@ import xsungroup.framework.base.entity.CorpEntity;
  * @Author: kingJing
  * @Date: 2019/7/5 13:38
  **/
-@Api
+@Api(tags={"企业接口"})
 @RestController
 @RequestMapping("corp")
 public class CorpController extends BaseController<CorpEntity>{

@@ -31,7 +31,7 @@ public class BaseController<T> {
      */
     @ApiOperation(value = "新增")
     @PostMapping("/save")
-    public ResponseInfo saveDate(@RequestBody T t) {
+    public ResponseInfo saveData(@RequestBody T t) {
         int result = baseDao.insert(t);
         return result > 0 ? new ResponseUtil().success("") : new ResponseUtil().fail(ResultEnum.FAIL.getMessage());
     }
@@ -44,7 +44,7 @@ public class BaseController<T> {
     @ApiOperation(value = "删除")
     @ApiImplicitParam(name = "id", value = "主键ID", required = true, dataType = "String")
     @DeleteMapping("/{id}")
-    public ResponseInfo deleteDate(@PathVariable String id) {
+    public ResponseInfo deleteData(@PathVariable String id) {
         baseDao.deleteById(id);
         return  new ResponseUtil().success("");
     }

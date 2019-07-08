@@ -1,6 +1,5 @@
 package xsungroup.framework.base.utils;
 
-import org.springframework.util.StringUtils;
 
 /**
  * @description: 返回消息对象封装
@@ -30,7 +29,7 @@ public class ResponseUtil {
      * @author: kingJing
      * @date: 2019/7/8 15:30
      **/
-    public ResponseInfo fail(String messge) {
+    public ResponseInfo error(String messge) {
         ResponseInfo respInfo = new ResponseInfo();
         respInfo.setFlag(ResultEnum.FAIL.getCode());
         respInfo.setMessage(messge);

@@ -33,7 +33,7 @@ public class BaseController<T> {
     @PostMapping("/save")
     public ResponseInfo saveData(@RequestBody T t) {
         int result = baseDao.insert(t);
-        return result > 0 ? new ResponseUtil().success("") : new ResponseUtil().fail(ResultEnum.FAIL.getMessage());
+        return result > 0 ? new ResponseUtil().success("") : new ResponseUtil().error(ResultEnum.FAIL.getMessage());
     }
 
     /**

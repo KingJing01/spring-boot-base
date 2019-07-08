@@ -7,9 +7,9 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * @description: 公司信息实体类 
+ * @description: 公司信息实体类
  * @author: kingJing 
- * @Date: 2019/7/8 14:49
+ * @Date: 2019/7/8 15:05
  */
 @Data
 @TableName("t_corp_test")

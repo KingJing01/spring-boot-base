@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import xsungroup.framework.base.dao.BaseDao;
+import xsungroup.framework.base.utils.ResponseInfo;
 
 /**
 * @Description: 基础控制层封装
@@ -27,8 +28,9 @@ public  class BaseController<T>  {
      */
     @ApiOperation(value = "新增")
     @PostMapping("/save")
-    public void saveDate(@RequestBody T t){
+    public ResponseInfo saveDate(@RequestBody T t){
         baseDao.insert(t);
+        return new ResponseInfo();
     }
 
     /**
@@ -41,6 +43,7 @@ public  class BaseController<T>  {
     public void deleteDate(@PathVariable String id){
         baseDao.deleteById(id);
     }
+
 
 
 }

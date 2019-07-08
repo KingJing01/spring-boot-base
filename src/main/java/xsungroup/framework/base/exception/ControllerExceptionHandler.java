@@ -1,9 +1,13 @@
 package xsungroup.framework.base.exception;
 
+import com.alibaba.fastjson.JSON;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+import xsungroup.framework.base.utils.ResponseUtil;
+import xsungroup.framework.base.utils.ResultEnum;
 
 import java.io.IOException;
 
@@ -13,6 +17,7 @@ import java.io.IOException;
  * @Date: 2019/7/8 15:55
  */
 @ControllerAdvice
+@ResponseBody
 public class ControllerExceptionHandler {
     private static final String logExceptionFormat = "全局异常捕获 ControllerExceptionHandler: Code: %s Detail: %s";
     private static Logger log = LoggerFactory.getLogger(ControllerExceptionHandler.class);
@@ -59,6 +64,7 @@ public class ControllerExceptionHandler {
 
     /**
      * 数组越界异常
+     *
      * @author: kingJing
      * @date: 2019/7/8 16:19
      */
@@ -79,7 +85,7 @@ public class ControllerExceptionHandler {
 
     private <T extends Throwable> String exceptionFormat(Integer code, T ex) {
         log.error(String.format(logExceptionFormat, code, ex.getMessage()));
-        return null;
+        return  JSON.toJSONString(new ResponseUtil().error(ResultEnum.FAIL.getMessage()));
     }
 
 

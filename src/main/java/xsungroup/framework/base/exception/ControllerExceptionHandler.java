@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import xsungroup.framework.base.utils.ExceptionEnum;
 import xsungroup.framework.base.utils.ResponseUtil;
 import xsungroup.framework.base.utils.ResultEnum;
 
@@ -101,7 +102,7 @@ public class ControllerExceptionHandler {
     **/
     private <T extends Throwable> String exceptionFormat(Integer code, T ex) {
         log.error(String.format(logExceptionFormat, code, ex.getMessage()));
-        return  JSON.toJSONString(new ResponseUtil().error(ResultEnum.FAIL.getMessage()));
+        return JSON.toJSONString(new ResponseUtil().error(ResultEnum.FAIL.getMessage()));
     }
 
 

@@ -14,7 +14,6 @@ import java.util.Date;
  */
 @Component
 public class MetaHandler implements MetaObjectHandler {
-    private static final Logger logger = LoggerFactory.getLogger(MetaHandler.class);
     /**
      * 新增数据执行
      * @param metaObject

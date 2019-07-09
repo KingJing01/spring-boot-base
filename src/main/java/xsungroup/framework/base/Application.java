@@ -9,6 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan(basePackages = {
         "xsungroup.framework.base.configure",
         "xsungroup.framework.base.controller",
+        "xsungroup.framework.base.exception",
         "xsungroup.framework.base.service"})
 @MapperScan("xsungroup.framework.base.dao")
 public class Application {

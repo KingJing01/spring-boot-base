@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import xsungroup.framework.base.utils.ResponseInfo;
 import xsungroup.framework.base.utils.ResponseUtil;
 import xsungroup.framework.base.utils.ResultEnum;
 
@@ -27,7 +28,7 @@ public class ControllerExceptionHandler {
      * @date: 2019/7/8 16:15
      **/
     @ExceptionHandler(RuntimeException.class)
-    public String runtimeExceptionHandler(RuntimeException ex) {
+    public ResponseInfo runtimeExceptionHandler(RuntimeException ex) {
         return exceptionFormat(1, ex);
     }
 
@@ -37,7 +38,7 @@ public class ControllerExceptionHandler {
      * @date: 2019/7/8 16:15
      **/
     @ExceptionHandler(NullPointerException.class)
-    public String nullPointerExceptionHandler(NullPointerException ex) {
+    public ResponseInfo nullPointerExceptionHandler(NullPointerException ex) {
         return exceptionFormat(2, ex);
     }
 
@@ -47,7 +48,7 @@ public class ControllerExceptionHandler {
      * @date: 2019/7/8 16:18
      **/
     @ExceptionHandler(ClassCastException.class)
-    public String classCastExceptionHandler(ClassCastException ex) {
+    public ResponseInfo classCastExceptionHandler(ClassCastException ex) {
         return exceptionFormat(3, ex);
     }
 
@@ -57,7 +58,7 @@ public class ControllerExceptionHandler {
      * @date: 2019/7/8 16:18
      **/
     @ExceptionHandler(IOException.class)
-    public String iOExceptionHandler(IOException ex) {
+    public ResponseInfo iOExceptionHandler(IOException ex) {
         return exceptionFormat(4, ex);
     }
 
@@ -68,7 +69,7 @@ public class ControllerExceptionHandler {
      * @date: 2019/7/8 16:19
      */
     @ExceptionHandler(IndexOutOfBoundsException.class)
-    public String indexOutOfBoundsExceptionHandler(IndexOutOfBoundsException ex) {
+    public ResponseInfo indexOutOfBoundsExceptionHandler(IndexOutOfBoundsException ex) {
         return exceptionFormat(5, ex);
     }
 
@@ -78,7 +79,7 @@ public class ControllerExceptionHandler {
      * @date: 2019/7/8 16:19
      **/
     @ExceptionHandler({Exception.class})
-    public String exception(Exception ex) {
+    public ResponseInfo exception(Exception ex) {
         return exceptionFormat(6, ex);
     }
 
@@ -88,7 +89,7 @@ public class ControllerExceptionHandler {
      * @return
      */
     @ExceptionHandler(SQLSyntaxErrorException.class)
-    public String SQLSyntaxErrorException(SQLSyntaxErrorException ex) {
+    public ResponseInfo SQLSyntaxErrorException(SQLSyntaxErrorException ex) {
         return exceptionFormat(7, ex);
     }
 
@@ -99,9 +100,9 @@ public class ControllerExceptionHandler {
     * @author: kingJing
     * @date: 2019/7/8 16:23
     **/
-    private <T extends Throwable> String exceptionFormat(Integer code, T ex) {
+    private <T extends Throwable> ResponseInfo exceptionFormat(Integer code, T ex) {
         log.error(String.format(logExceptionFormat, code, ex.getMessage()));
-        return JSON.toJSONString(new ResponseUtil().error(ResultEnum.FAIL.getMessage()));
+        return new ResponseUtil().error(ResultEnum.FAIL.getMessage());
     }
 
 

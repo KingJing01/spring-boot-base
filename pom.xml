@@ -8,11 +8,11 @@
         <version>2.1.6.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>xsungroup.framework</groupId>
+    <groupId>kingJing.framework</groupId>
     <artifactId>base</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>xsungroup.framework.base</name>
-    <description>Framework base project for xsungroup</description>
+    <description>Framework base project for kingJing</description>
     <repositories>
         <!--阿里云仓库-->
         <repository>

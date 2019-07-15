@@ -1,5 +1,8 @@
 package xsungroup.framework.base.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -12,6 +15,8 @@ import xsungroup.framework.base.dao.BaseDao;
 import xsungroup.framework.base.utils.ResponseInfo;
 import xsungroup.framework.base.utils.ResponseUtil;
 import xsungroup.framework.base.utils.ResultEnum;
+
+import java.util.List;
 
 /**
  * @Description: 基础控制层封装
@@ -47,6 +52,22 @@ public class BaseController<T> {
     public ResponseInfo deleteData(@PathVariable String id){
         baseDao.deleteById(id);
         return  new ResponseUtil().success("");
+    }
+
+    @ApiOperation(value = "分页查询")
+    @PostMapping("/list")
+    public ResponseInfo pageData(){
+        Page<T> page = new Page<>(1,5);
+        QueryWrapper<T> queryWrapper =  new QueryWrapper<>();
+        IPage<T> data = baseDao.selectPage(page,queryWrapper);
+        return new ResponseUtil().success(data);
+    }
+
+    @ApiOperation(value = "批量删除")
+    @PostMapping("/deleteList")
+    public ResponseInfo deletePatch(@RequestBody List<String> list){
+        int result = baseDao.deleteBatchIds(list);
+        return new ResponseUtil().success("");
     }
 
 

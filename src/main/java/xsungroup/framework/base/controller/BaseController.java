@@ -30,10 +30,12 @@ public class BaseController<T> {
     private BaseDao<T> baseDao;
 
     /**
-     * 通用新增方法.
-     *
-     * @param t
-     */
+     * @description: 通用新增方法
+     * @param: t 对象
+     * @return: ResponseInfo
+     * @author: kingJing
+     * @date: 2019/7/16 16:51
+     **/
     @ApiOperation(value = "新增")
     @PostMapping("/save")
     public ResponseInfo saveData(@RequestBody T t) {
@@ -41,11 +43,13 @@ public class BaseController<T> {
         return result > 0 ? new ResponseUtil().success("") : new ResponseUtil().error(ResultEnum.FAIL.getMessage());
     }
 
-    /**
-     * 通用删除方法
-     *
-     * @param id
-     */
+   /**
+    * @description: 通过删除方法
+    * @param: 数据id
+    * @return: ResponseInfo
+    * @author: kingJing
+    * @date: 2019/7/16 16:50
+    **/
     @ApiOperation(value = "删除")
     @ApiImplicitParam(name = "id", value = "主键ID", required = true, dataType = "String")
     @DeleteMapping("/{id}")
@@ -53,7 +57,14 @@ public class BaseController<T> {
         baseDao.deleteById(id);
         return new ResponseUtil().success("");
     }
-
+    
+    /**
+     * @description: 通用的分页查询
+     * @param: T 对象
+     * @return: ResponseInfo
+     * @author: kingJing
+     * @date: 2019/7/16 16:49
+     **/
     @ApiOperation(value = "分页查询")
     @PostMapping("/page_list")
     public ResponseInfo pageData(@RequestBody T t) {
@@ -62,7 +73,14 @@ public class BaseController<T> {
         IPage<T> data = baseDao.selectPage(page, queryWrapper);
         return new ResponseUtil().success(data);
     }
-
+    
+    /**
+     * @description: 通用物理删除
+     * @param:  [] 删除对象id数组
+     * @return: ResponseInfo
+     * @author: kingJing
+     * @date: 2019/7/16 16:51
+     **/
     @ApiOperation(value = "批量删除")
     @PostMapping("/delete_patch")
     public ResponseInfo deletePatch(@RequestBody List<String> list) {

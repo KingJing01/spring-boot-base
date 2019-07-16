@@ -4,9 +4,8 @@ import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
-import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Builder;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -27,6 +26,7 @@ public abstract class BaseEntity implements Serializable{
 
     @TableField(fill = FieldFill.INSERT)
     @ApiModelProperty(hidden = true)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     @TableField(fill = FieldFill.INSERT)
@@ -35,6 +35,7 @@ public abstract class BaseEntity implements Serializable{
 
     @TableField(fill = FieldFill.INSERT_UPDATE)
     @ApiModelProperty(hidden = true)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
 
     @TableField(fill=FieldFill.INSERT_UPDATE)

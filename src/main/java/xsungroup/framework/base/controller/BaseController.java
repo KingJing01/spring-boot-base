@@ -28,7 +28,6 @@ public class BaseController<T> {
 
     @Autowired
     private BaseDao<T> baseDao;
-    private T t;
 
     /**
      * 通用新增方法.
@@ -37,7 +36,7 @@ public class BaseController<T> {
      */
     @ApiOperation(value = "新增")
     @PostMapping("/save")
-    public ResponseInfo saveData(@RequestBody T t){
+    public ResponseInfo saveData(@RequestBody T t) {
         int result = baseDao.insert(t);
         return result > 0 ? new ResponseUtil().success("") : new ResponseUtil().error(ResultEnum.FAIL.getMessage());
     }
@@ -50,23 +49,23 @@ public class BaseController<T> {
     @ApiOperation(value = "删除")
     @ApiImplicitParam(name = "id", value = "主键ID", required = true, dataType = "String")
     @DeleteMapping("/{id}")
-    public ResponseInfo deleteData(@PathVariable String id){
+    public ResponseInfo deleteData(@PathVariable String id) {
         baseDao.deleteById(id);
-        return  new ResponseUtil().success("");
+        return new ResponseUtil().success("");
     }
 
     @ApiOperation(value = "分页查询")
     @PostMapping("/list")
-    public ResponseInfo pageData(@RequestBody T t) throws Exception{
-        Page<T> page = new Page<>();
-        QueryWrapper<T> queryWrapper =  new QueryWrapper<>();
-        IPage<T> data = baseDao.selectPage(page,queryWrapper);
+    public ResponseInfo pageData(@RequestBody T t) {
+        Page<T> page = new Page<>(1, 10);
+        QueryWrapper<T> queryWrapper = new QueryWrapper<>();
+        IPage<T> data = baseDao.selectPage(page, queryWrapper);
         return new ResponseUtil().success(data);
     }
 
     @ApiOperation(value = "批量删除")
     @PostMapping("/deleteList")
-    public ResponseInfo deletePatch(@RequestBody List<String> list){
+    public ResponseInfo deletePatch(@RequestBody List<String> list) {
         int result = baseDao.deleteBatchIds(list);
         return new ResponseUtil().success("");
     }

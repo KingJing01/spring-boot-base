@@ -66,7 +66,7 @@ public class BaseController<T> {
     @ApiOperation(value = "批量删除")
     @PostMapping("/deleteList")
     public ResponseInfo deletePatch(@RequestBody List<String> list) {
-        int result = baseDao.deleteBatchIds(list);
+        baseDao.deleteBatchIds(list);
         return new ResponseUtil().success("");
     }
 

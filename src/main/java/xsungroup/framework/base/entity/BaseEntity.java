@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Builder;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -43,5 +44,11 @@ public abstract class BaseEntity implements Serializable{
     @TableField
     @ApiModelProperty(hidden = true)
     private int isAble;
+
+    @TableField(exist = false)
+    private long pageSize = 1;
+
+    @TableField(exist = false)
+    private long pageNumber = 10;
 
 }

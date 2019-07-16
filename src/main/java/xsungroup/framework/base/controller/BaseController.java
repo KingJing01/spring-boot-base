@@ -17,6 +17,7 @@ import xsungroup.framework.base.utils.ResponseUtil;
 import xsungroup.framework.base.utils.ResultEnum;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Description: 基础控制层封装
@@ -28,6 +29,7 @@ public class BaseController<T> {
 
     @Autowired
     private BaseDao<T> baseDao;
+    private T t;
 
     /**
      * 通用新增方法.
@@ -56,8 +58,8 @@ public class BaseController<T> {
 
     @ApiOperation(value = "分页查询")
     @PostMapping("/list")
-    public ResponseInfo pageData(){
-        Page<T> page = new Page<>(1,5);
+    public ResponseInfo pageData(@RequestBody T t) {
+        Page<T> page = new Page<>(1,10);
         QueryWrapper<T> queryWrapper =  new QueryWrapper<>();
         IPage<T> data = baseDao.selectPage(page,queryWrapper);
         return new ResponseUtil().success(data);

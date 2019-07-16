@@ -49,6 +49,6 @@ public abstract class BaseEntity implements Serializable{
     private long pageSize = 1;
 
     @TableField(exist = false)
-    private long pageNumber = 10;
+    private long pageNum = 10;
 
 }

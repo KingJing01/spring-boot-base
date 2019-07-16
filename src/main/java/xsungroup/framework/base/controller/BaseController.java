@@ -55,7 +55,7 @@ public class BaseController<T> {
     }
 
     @ApiOperation(value = "分页查询")
-    @PostMapping("/list")
+    @PostMapping("/page_list")
     public ResponseInfo pageData(@RequestBody T t) {
         Page<T> page = new Page<>(1, 10);
         QueryWrapper<T> queryWrapper = new QueryWrapper<>();
@@ -64,7 +64,7 @@ public class BaseController<T> {
     }
 
     @ApiOperation(value = "批量删除")
-    @PostMapping("/deleteList")
+    @PostMapping("/delete_patch")
     public ResponseInfo deletePatch(@RequestBody List<String> list) {
         baseDao.deleteBatchIds(list);
         return new ResponseUtil().success("");

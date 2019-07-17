@@ -46,10 +46,15 @@ public abstract class BaseEntity implements Serializable{
     @ApiModelProperty(hidden = true)
     private int isAble;
 
+    /**
+     * 分页查询封装参数
+     */
     @TableField(exist = false)
     private long pageSize = 1;
 
     @TableField(exist = false)
     private long pageNum = 10;
 
+    @TableField(exist = false)
+    private String columns;
 }

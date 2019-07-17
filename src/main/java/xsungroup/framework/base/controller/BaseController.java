@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import xsungroup.framework.base.dao.BaseDao;
+import xsungroup.framework.base.entity.BaseEntity;
 import xsungroup.framework.base.utils.ResponseInfo;
 import xsungroup.framework.base.utils.ResponseUtil;
 import xsungroup.framework.base.utils.ResultEnum;
@@ -24,7 +25,7 @@ import java.util.List;
  * @Date: 2019/7/5 13:38
  **/
 @Api
-public class BaseController<T> {
+public class BaseController<T extends BaseEntity> {
 
     @Autowired
     private BaseDao<T> baseDao;
@@ -67,8 +68,8 @@ public class BaseController<T> {
      **/
     @ApiOperation(value = "分页查询")
     @PostMapping("/page_list")
-    public ResponseInfo pageData(@RequestBody T t) {
-        Page<T> page = new Page<>(1, 10);
+    public ResponseInfo pageData(@RequestBody T  t) {
+        Page<T> page = new Page<>( t.getPageNum(), t.getPageSize());
         QueryWrapper<T> queryWrapper = new QueryWrapper<>();
         IPage<T> data = baseDao.selectPage(page, queryWrapper);
         return new ResponseUtil().success(data);

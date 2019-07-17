@@ -93,5 +93,4 @@ public class BaseController<T extends BaseEntity> {
         return new ResponseUtil().success("");
     }
 
-
 }

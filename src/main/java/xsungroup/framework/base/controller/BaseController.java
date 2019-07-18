@@ -45,10 +45,10 @@ public class BaseController<T extends BaseEntity> {
      **/
     @ApiOperation(value = "新增")
     @PostMapping("/save")
-    public ResponseInfo saveData(@Valid @RequestBody T t, BindingResult bindingResult)  {
-        if(bindingResult.hasErrors()){
+    public ResponseInfo saveData(@Valid @RequestBody T t, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             List<ObjectError> errorList = bindingResult.getAllErrors();
-            for(ObjectError error : errorList){
+            for (ObjectError error : errorList) {
                 return new ResponseUtil().error(error.getDefaultMessage());
             }
         }
@@ -108,7 +108,9 @@ public class BaseController<T extends BaseEntity> {
     @ApiOperation(value = "自定义异常测试方法")
     @PostMapping("/xinya_exception")
     public ResponseInfo testException() throws Exception {
-        throw new XsungroupException(XsunMsgEnum.USER_UNIQUE.getMessage());
-        //return new ResponseUtil().success("");
+        if (true) {
+            throw new XsungroupException(XsunMsgEnum.USER_UNIQUE.getMessage());
+        }
+        return new ResponseUtil().success("");
     }
 }

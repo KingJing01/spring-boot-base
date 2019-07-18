@@ -8,6 +8,8 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +20,7 @@ import xsungroup.framework.base.utils.ResponseInfo;
 import xsungroup.framework.base.utils.ResponseUtil;
 import xsungroup.framework.base.utils.ResultEnum;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -40,7 +43,13 @@ public class BaseController<T extends BaseEntity> {
      **/
     @ApiOperation(value = "新增")
     @PostMapping("/save")
-    public ResponseInfo saveData(@RequestBody T t) {
+    public ResponseInfo saveData(@Valid @RequestBody T t, BindingResult bindingResult)  {
+        if(bindingResult.hasErrors()){
+            List<ObjectError> errorList = bindingResult.getAllErrors();
+            for(ObjectError error : errorList){
+                return new ResponseUtil().error(error.getDefaultMessage());
+            }
+        }
         int result = baseDao.insert(t);
         return result > 0 ? new ResponseUtil().success("") : new ResponseUtil().error(ResultEnum.FAIL.getMessage());
     }

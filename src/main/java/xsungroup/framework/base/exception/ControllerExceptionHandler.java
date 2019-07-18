@@ -84,6 +84,7 @@ public class ControllerExceptionHandler {
 
     /**
      * 数据库异常
+     *
      * @param ex
      * @return
      */
@@ -92,16 +93,22 @@ public class ControllerExceptionHandler {
         return exceptionFormat(7, ex);
     }
 
-   /**
-    * @description: 异常信息输出并统一处理
-    * @param: 错误编码
-    * @return: string
-    * @author: kingJing
-    * @date: 2019/7/8 16:23
-    **/
+
+    /**
+     * @description: 异常信息输出并统一处理
+     * @param: 错误编码
+     * @return: string
+     * @author: kingJing
+     * @date: 2019/7/8 16:23
+     **/
     private <T extends Throwable> ResponseInfo exceptionFormat(Integer code, T ex) {
         log.error(String.format(logExceptionFormat, code, ex.getMessage()));
-        return new ResponseUtil().error(ResultEnum.FAIL.getMessage());
+        if (code == 10) {
+            return new ResponseUtil().error(ex.getMessage());
+        } else {
+            return new ResponseUtil().error(ResultEnum.FAIL.getMessage());
+        }
+
     }
 
 

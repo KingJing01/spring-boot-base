@@ -92,7 +92,14 @@ public class ControllerExceptionHandler {
     public ResponseInfo SQLSyntaxErrorException(SQLSyntaxErrorException ex) {
         return exceptionFormat(7, ex);
     }
-
+    
+    /**
+     * @description: 自定义异常处理方法 注：101 特殊编码
+     * @param:  异常类
+     * @return: ResponseInfo
+     * @author: kingJing
+     * @date: 2019/7/18 15:50
+     **/
     @ExceptionHandler(XsungroupException.class)
     public ResponseInfo XsungroupException(XsungroupException ex) {
         return exceptionFormat(101, ex);

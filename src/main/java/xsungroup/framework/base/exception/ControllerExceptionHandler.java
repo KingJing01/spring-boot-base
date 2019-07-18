@@ -93,6 +93,10 @@ public class ControllerExceptionHandler {
         return exceptionFormat(7, ex);
     }
 
+    @ExceptionHandler(XsungroupException.class)
+    public ResponseInfo XsungroupException(XsungroupException ex) {
+        return exceptionFormat(101, ex);
+    }
 
     /**
      * @description: 异常信息输出并统一处理
@@ -103,7 +107,7 @@ public class ControllerExceptionHandler {
      **/
     private <T extends Throwable> ResponseInfo exceptionFormat(Integer code, T ex) {
         log.error(String.format(logExceptionFormat, code, ex.getMessage()));
-        if (code == 10) {
+        if (101 == code.intValue()) {
             return new ResponseUtil().error(ex.getMessage());
         } else {
             return new ResponseUtil().error(ResultEnum.FAIL.getMessage());

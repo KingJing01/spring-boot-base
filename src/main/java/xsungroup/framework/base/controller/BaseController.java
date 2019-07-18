@@ -19,6 +19,8 @@ import xsungroup.framework.base.entity.BaseEntity;
 import xsungroup.framework.base.utils.ResponseInfo;
 import xsungroup.framework.base.utils.ResponseUtil;
 import xsungroup.framework.base.utils.ResultEnum;
+import xsungroup.framework.base.exception.XsungroupException;
+import xsungroup.framework.base.utils.XsunMsgEnum;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -102,4 +104,11 @@ public class BaseController<T extends BaseEntity> {
         return new ResponseUtil().success("");
     }
 
+
+    @ApiOperation(value = "自定义异常测试方法")
+    @PostMapping("/xinya_exception")
+    public ResponseInfo testException() throws Exception {
+        throw new XsungroupException(XsunMsgEnum.USER_UNIQUE.getMessage());
+        //return new ResponseUtil().success("");
+    }
 }

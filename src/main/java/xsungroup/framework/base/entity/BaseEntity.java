@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -17,6 +18,7 @@ import java.util.Date;
  * @Author: kingJing
  * @Date: 2019/7/5 13:53
  **/
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public abstract class BaseEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -36,7 +38,6 @@ public abstract class BaseEntity implements Serializable {
     @TableField(fill = FieldFill.INSERT_UPDATE)
     @ApiModelProperty(hidden = true)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-
     private Date updateTime;
 
     @TableField(fill = FieldFill.INSERT_UPDATE)
